@@ -10,8 +10,6 @@ Conduct](CODE_OF_CONDUCT.md), regardless of whether the contribution is a
 discussion in a Pull Request on GitHub, a conversation in the #nerves channel on
 the [Elixir Slack], or any of the other items outlined below.
 
-[Elixir Slack]: https://elixir-slackin.herokuapp.com/
-
 ## How you can help
 
 We created this document to help you quickly turn your desire to contribute into
@@ -37,16 +35,15 @@ have limited time to contribute and we would rather have one of the
 less-preferred items than nothing at all.
 
 One important exception is that **if you think you've found a security
-vulnerability, do not open a GitHub Issue!** Please disclose these by emailing
-[security@nerves-project.org] instead, so that we can work on releasing a fix
-before the vulnerability is disclosed publicly.
+vulnerability, do not open a GitHub Issue!** Follow our [Security Policy] to
+report it privately so we can work on releasing a fix before the vulnerability
+is disclosed publicly.
 
 1. Pull Request on GitHub
 
     If you're able to send us an improvement directly to the [documentation
     source] or [website source] code, that is extremely helpful! Don't worry
-    about assigning labels, unless you also want to contribute to the [Triage
-    process] outlined below.
+    about assigning labels.
 
     Also, be sure to check out the guidelines below about contributing code and
     documentation changes.
@@ -72,14 +69,14 @@ before the vulnerability is disclosed publicly.
 
     We love to see how people are using Nerves for fun and and for work. If you
     blog about a Nerves-based project, please consider posting a link somewhere
-    that the community will notice it, like [Elixir Forum], [ElixirStatus], or
+    that the community will notice it, like [Elixir Forum], [ElixirStatus] or
     the #nerves channel on the [Elixir Slack].
 
-5. Chat with us on Slack
+6. Chat with us on Slack
 
-    We have a #nerves channel on the [Elixir Slack]. We'd be happy to have you
-    drop in and let us know if you have questions or want to talk about a
-    project you're working on, or thinking about working on.
+    We have a #nerves channel on both the [Elixir Slack].
+    We'd be happy to have you drop in and let us know if you have questions or
+    want to talk about a project you're working on, or thinking about working on.
 
 [our website]: http://www.nerves-project.org
 [Getting Started Guide]: https://hexdocs.pm/nerves/getting-started.html
@@ -92,7 +89,8 @@ before the vulnerability is disclosed publicly.
 [Elixir Forum]: https://elixirforum.com
 [Nerves section]: https://elixirforum.com/c/nerves-forum
 [ElixirStatus]: http://elixirstatus.com/
-[security@nerves-project.org]: mailto:security@nerves-project.org
+[Security Policy]: SECURITY.md
+[Elixir Slack]: https://elixir-slack.community/
 
 ## Answer questions on the Elixir Forum and Slack channel
 
@@ -121,19 +119,6 @@ cost of maintaining the project.
 
 [OpenCollective site]: https://opencollective.com/nerves-project
 
-## Issue and Pull Request triage
-
-In order to keep track of Issues and Pull Requests across all of our
-repositories, we have a [Nerves Radar] project in our GitHub Organization.
-Unfortunately, this isn't visible to the public because GitHub requires that you
-be a member of the Organization to see Organization-level Projects. If you want
-to get involved in this process, get in touch with us on Slack!
-
-We currently don't have this process formalized, so feel free to contribute to
-this document itself!
-
-[Nerves Radar]: https://github.com/orgs/nerves-project/projects/1
-
 ## Code and documentation changes
 
 If you're looking for a way to directly contribute to the code and
@@ -151,8 +136,28 @@ being worked-on, avoiding duplicated effort and Issues that get stale over time.
 Working on your first Pull Request? You can learn how from this *free* series,
 [How to Contribute to an Open Source Project on GitHub].
 
-The core team has GitHub integrations with Slack, so we will be notified
-immediately in the #nerves-dev channel about activity on GitHub Issues and Pull
+The majority, if not all, Nerves projects have common practices to support code
+maintainability. The tedious bits are mostly managed through automated tools.
+If you want to avoid fixing CI failures you can run them locally first:
+
+```
+mix format --check-formatted
+mix deps.unlock --check-unused
+mix test
+mix credo -a --strict
+mix dialyzer
+```
+
+Some repos may vary from this. If you notice that they do, please file an issue
+about it so we can improve the situation.
+
+Then there are preferences that are not necessarily enforced by tools but are
+generally required:
+
+- Document all public functions.
+- Add a typespec to all public functions.
+
+The core team will be notified about activity on GitHub Issues and Pull
 Requests. We really appreciate you taking the time to record any Issues in
 GitHub so that we don't lose track, but we all have busy lives outside of Nerves
 work, so don't take it personally if it takes us a long time to respond.
@@ -164,8 +169,7 @@ work, so don't take it personally if it takes us a long time to respond.
 Copyright and licensing are very important to open-source software projects.
 Nerves components fall under several licenses, so please review the license for
 the project to which you are contributing. By contributing, you certify that you
-have the right to submit the changes under the project's open source license and
-assign copyright to the Nerves Project maintainers.
+have the right to submit the changes under the project's open source license.
 
 ### Style guide for documentation
 
